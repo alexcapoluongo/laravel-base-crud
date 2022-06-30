@@ -43,6 +43,12 @@ class ComicsController extends Controller
     public function store(Request $request)
     {
         //
+        $data= $request->all();
+        $new_comic= new Comic();
+        $new_comic->fill($data);
+
+        $new_comic->save();
+        return redirect()->route('comics.show',['comic' => $new_comic->id] );
     }
 
     /**
@@ -54,6 +60,8 @@ class ComicsController extends Controller
     public function show($id)
     {
         //
+        $comic = Comic::find($id);
+        return view('comics.show', compact('comic'));
     }
 
     /**
