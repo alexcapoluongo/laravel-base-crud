@@ -110,6 +110,8 @@ class ComicsController extends Controller
     public function destroy($id)
     {
         //
-        dd('Destroy');
+        $comic = Comic::findOrFail($id);
+        $comic->delete();
+        dd('Your element has been deleted');
     }
 }
