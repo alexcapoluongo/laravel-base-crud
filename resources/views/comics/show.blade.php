@@ -6,5 +6,8 @@
     <p>{{ $comic->image }}</p>
     <p> {{ $comic->type}}</p>
     <p>{{ $comic->sale_date }}</p>
+
+    <a href="{{ route('comics.edit', ['comic'=>$comic->id]) }}" class="btn btn-primary">Modifica</a>
+    
 </div>
 @endsection

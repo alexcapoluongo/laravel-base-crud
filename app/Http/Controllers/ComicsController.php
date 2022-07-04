@@ -72,7 +72,7 @@ class ComicsController extends Controller
     {
         //
         $comic_to_update = Comic::findOrFail($id);
-        return view ('comics.edit', compact('comic_to_update'));
+        return view('comics.edit', compact('comic_to_update'));
     }
 
     /**
@@ -85,6 +85,10 @@ class ComicsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $data = $request->all();
+        $comic_to_update=Comic::findOrFail($id);
+        $comic_to_update->update($data);
+        return redirect()->route('comics.show', ['comic' => $comic_to_update->id]);
     }
 
     /**
