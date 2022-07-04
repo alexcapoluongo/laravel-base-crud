@@ -16,11 +16,9 @@ class ComicsController extends Controller
     {
         //
         $comics = Comic::all();
-
         $data = [
             'comics' => $comics
         ];
-
         return view('comics.index', $data);
     }
 
@@ -73,6 +71,8 @@ class ComicsController extends Controller
     public function edit($id)
     {
         //
+        $comic_to_update = Comic::findOrFail($id);
+        return view ('comics.edit', compact('comic_to_update'));
     }
 
     /**
