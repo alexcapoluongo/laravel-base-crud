@@ -86,14 +86,14 @@ class ComicsController extends Controller
     {
         // Validazione dati
         $request->validate([
-            'title'=> 'required',
+            'title'=> 'required|max:100',
             'price'=> 'required',
             'image'=> 'required',
-            'type'=> 'required',
+            'type'=> 'required|max:50',
             'sale_date'=> 'required',
-            'description'=> 'required',
+            'description'=> 'required|max:255',
         ]);
-        
+
         // Salvataggio dati
         $data = $request->all();
         $comic_to_update=Comic::findOrFail($id);
@@ -110,5 +110,6 @@ class ComicsController extends Controller
     public function destroy($id)
     {
         //
+        dd('Destroy');
     }
 }
